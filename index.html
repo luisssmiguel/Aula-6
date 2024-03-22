@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Formulário de Inscrição</title>
+</head>
 <body>
 
-  <h1>Formulário de Inscrição</h1>
+<h1>Formulário de Inscrição</h1>
 
-<form action="https://www.w3schools.com/action_page.php   " method="post">
+<form action="https://www.w3schools.com/action_page.php" method="post">
     <label for="data">Data:</label><br>
     <input type="date" id="data" name="data"><br>
     
@@ -26,9 +29,54 @@
     <label for="cidade">Cidade:</label><br>
     <input list="cidades" id="cidade" name="cidade">
     <datalist id="cidades">
-    </datalist><br>
+        <option value="São Paulo"></option>
+        <option value="Campinas"></option>
+        <option value="Guarulhos"></option>
+        <option value="São Bernardo do Campo"></option>
+        <option value="Santo André"></option>
+        <option value="Santos"></option>
+        <option value="São José dos Campos"></option>
+        <option value="Ribeirão Preto"></option>
+        <option value="Osasco"></option>
+        <option value="Sorocaba"></option>
+        <option value="Rio de Janeiro"></option>
+        <option value="Niterói"></option>
+        <option value="São Gonçalo"></option>
+        <option value="Curitiba"></option>
+        <option value="Londrina"></option>
+        <option value="Maringá"></option>
+        <option value="Florianópolis"></option>
+    </datalist>
+        </datalist><br>
     <label for="estado">Estado:</label><br>
     <select id="estado" name="estado">
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
     </select><br>
     <label for="cep">CEP:</label><br>
     <input type="text" id="cep" name="cep"><br>
@@ -59,43 +107,7 @@
     <input type="radio" id="semi_presencial" name="modelo" value="semi_presencial">
     <label for="semi_presencial">Semi presencial</label><br>
     <input type="submit" value="Enviar">
-  </form>
+</form>
 
-  <script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  const selectEstado = document.getElementById('estado');
-  const datalistCidade = document.getElementById('cidades');
-
-  
-  fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(estado => {
-        const optionEstado = document.createElement('option');
-        optionEstado.value = estado.id;
-        optionEstado.text = estado.nome;
-        selectEstado.appendChild(optionEstado);
-      });
-    });
-
-  
-  selectEstado.addEventListener('change', (event) => {
-    const estadoId = event.target.value;
-
-  
-    datalistCidade.innerHTML = '';
-
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(municipio => {
-          const optionCidade = document.createElement('option');
-          optionCidade.value = municipio.nome;
-          datalistCidade.appendChild(optionCidade);
-        });
-      });
-  });
-});
-    </script>
 </body>
 </html>
